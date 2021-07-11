@@ -1,6 +1,12 @@
 # git-haiku
 Poems for your git history
 
+# Dependencies
+git-haiku relies on the wonderful work made by [Teddy Katz](https://blog.teddykatz.com/) in [`lucky_commit`](https://github.com/not-an-aardvark/lucky-commit).
+
+To install `lucky_commit` follow [the instructions](https://github.com/not-an-aardvark/lucky-commit#installation).
+Or run `cargo install lucky_commit --locked`
+
 # Installation
 Copy the `git-haiku` script in your PATH
 `sudo cp git-haiku /usr/local/bin/`
