@@ -1,0 +1,17 @@
+#!/bin/bash -eu
+
+haiku=$1
+shift
+
+prepare_haiku_file() {
+	temporary_file=$(mktemp)
+	echo $1 | tr ' ' '\n' > $temporary_file
+	echo $temporary_file
+}
+
+haiku_file=$(prepare_haiku_file "$haiku")
+echo "Prepared haiku in $haiku_file"
+trap '{ rm -f -- "$haiku_file"; }' EXIT
+
+git rebase --exec "lucky_commit \$(sed -i -e '1{w /dev/stdout' -e 'd}' $haiku_file)" $@
+
